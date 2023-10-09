@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TODO App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body class="center">
+    <h1 class="title fw-bold">
+      <input type="text" class="username" id="username" />
+      <span><span class="glow">TODO</span> List</span>
+    </h1>
+    <main class="center">
+      <div class="todo-input">
+        <input
+          type="text"
+          id="todo-input"
+          placeholder="Enter TODO task title"
+        />
+        <div class="dd" id="severity">
+          <button>Severity</button>
+          <div class="menu hide">
+            <li data-value="3">Top Priority (Level 3)</li>
+            <li data-value="2">Medium Priority (Level 2)</li>
+            <li data-value="1">Least Priority (Level 1)</li>
+          </div>
+        </div>
+        <button class="btn" id="plus">+</button>
+      </div>
+      <div class="tabs">
+        <button id="active">Active</button>
+        <button id="completed">Completed</button>
+        <button id="all" class="selected">All</button>
+      </div>
+      <ul class="todos" id="all-todos"></ul>
+      <ul class="todos remove" id="active-todos"></ul>
+      <ul class="todos remove" id="completed-todos"></ul>
+    </main>
+  </body>
+  <script src="index.js"></script>
+</html>
