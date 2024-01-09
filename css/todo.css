@@ -1,0 +1,174 @@
+.todo-input {
+  width: 100%;
+  border-radius: var(--radius);
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  --height: clamp(2rem, 6vh, 3rem);
+  & input[type="text"] {
+    flex: 9;
+    font-family: inherit;
+    font-size: 0.9rem;
+    /*font-size: clamp(0.8rem, 1.8vw, 1.2rem);*/
+    background: none;
+    height: var(--height);
+    padding-left: 1rem;
+    border: 0.1rem solid var(--primaryDark);
+    border-radius: var(--radius);
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(58, 64, 90, 0.5);
+    &:focus {
+      outline: 0.1rem solid var(--primaryDark);
+    }
+    &::placeholder {
+      text-shadow: 0.01rem 0.02rem 0.01rem var(--primaryDark);
+      font-size: 90%;
+    }
+  }
+  & .dropdown {
+    flex: 1;
+    height: var(--height);
+  }
+  & #plus {
+    background: none;
+    display: grid;
+    place-items: center;
+    border: 0.1rem solid var(--primaryDark);
+    box-shadow: 0.1rem 0.1rem 0.1rem rgba(58, 64, 90, 0.5);
+    color: var(--primaryDark);
+    font-size: 130%;
+    height: var(--height);
+    width: var(--height);
+    transition: scale 0.2s ease-in-out;
+    &:focus {
+      outline: 0.1rem solid var(--primaryDark);
+    }
+    &:hover {
+      font-weight: bold;
+    }
+    &:active {
+      box-shadow: 0.01rem 0.01rem 0.01rem rgba(58, 64, 90, 0.5);
+      scale: 0.95;
+    }
+  }
+}
+.todos {
+  all: unset;
+  width: 100%;
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  height: clamp(10rem, 35vh, 40rem);
+  padding-inline: 0.1rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  gap: 0.3rem;
+}
+@media screen and (min-height: 900px) {
+  .todos {
+    height: clamp(10rem, 40vh, 40rem);
+  }
+}
+@media screen and (min-height: 1000px){
+  .todos {
+    height: clamp(11rem, 49vh, 40rem);
+  }
+}
+@media screen and (min-height: 1200px){
+  .todos {
+    height: clamp(12rem, 42vh, 25rem);
+  }
+}
+
+.todo {
+  list-style: none;
+  border-radius: var(--radius);
+  background-color: var(--priority-1);
+  box-shadow: 0.09rem 0.11rem 0.05rem 0 rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+  border-bottom: none;
+  & svg {
+    pointer-events: none;
+  }
+  & .text {
+    width: 100%;
+    padding-inline: 1rem;
+    text-align: left;
+  }
+  & .indicator {
+    text-align: right;
+    padding-inline: 1.5rem;
+  }
+  & .todo-buttons {
+    display: flex;
+    flex-shrink: 1;
+    gap: 0.5rem;
+  }
+  & button {
+    font-size: 110%;
+    height: 2.5rem;
+    width: 2.5rem;
+    &:focus {
+      outline: 0.1rem solid var(--primaryDark);
+    }
+  }
+  & .btn-danger {
+    color: var(--secondaryLight);
+  }
+}
+
+.priority-1 {
+  background-color: var(--priority-1);
+}
+.priority-2 {
+  background-color: var(--priority-2);
+}
+.priority-3 {
+  background-color: var(--priority-3);
+}
+.popOut {
+  animation: popOut 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .todos {
+    animation: fadeIn 0.5s ease-in-out forwards;
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .todos,
+  .popOut {
+    animation: none;
+  }
+}
+
+.completed {
+  background-color: var(--completed);
+}
+
+input[type="checkbox"] {
+  all: unset;
+  min-width: 2rem;
+  min-height: 2rem;
+  border: 0.1rem solid var(--primaryDark);
+  border-radius: var(--radius);
+  background-color: var(--secondaryLight);
+  cursor: pointer;
+  position: relative;
+  &:focus {
+    outline: 0.1rem solid var(--primaryDark);
+  }
+  &:checked::after {
+    content: "✔";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    font-size: 130%;
+    justify-content: center;
+  }
+}

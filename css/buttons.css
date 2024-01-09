@@ -1,0 +1,29 @@
+.btn {
+  background-color: var(--primaryDark);
+  color: var(--secondaryLight);
+  border-radius: var(--radius);
+  border: none;
+  outline: none;
+}
+.btn:disabled,
+.btn:disabled:active,
+.btn:disabled:hover {
+  opacity: 0.5;
+  cursor: not-allowed;
+  user-select: none;
+  animation: none;
+  scale: 1;
+  font-weight: normal;
+}
+.btn-warning {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--secondaryLight);
+  border: 0.1rem solid var(--primaryDark);
+}
+.btn-danger {
+  width: 1rem;
+  height: 1rem;
+  background-color: var(--secondaryLight);
+  border: 0.1rem solid var(--primaryDark);
+}

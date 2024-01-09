@@ -1,0 +1,55 @@
+.title {
+  display: flex;
+  animation: dropDown 0.4s ease-in-out;
+  font-size: 1.8rem;
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  flex-wrap: wrap;
+  margin-bottom: min(2rem, 1vw);
+  & span {
+    margin-inline: 0.4rem;
+  }
+  & input {
+    margin-inline: 0.4rem;
+    /*outline: 2px solid red;*/
+  }
+}
+.glow {
+  background: linear-gradient(
+  45deg,
+  var(--pastel-red),
+  var(--pastel-red),
+  var(--primaryDark),
+  var(--pastel-green),
+  var(--pastel-green)
+  );
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gloss 2s ease-in-out infinite;
+}
+.username {
+  all: unset;
+}
+@keyframes gloss {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow {
+    animation: gloss 20s ease-in-out infinite;
+  }
+  .title{
+    animation: none;
+  }
+}

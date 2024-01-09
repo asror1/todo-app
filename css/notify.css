@@ -1,0 +1,46 @@
+@keyframes leftToRight {
+  from {
+    right: -70%;
+  }
+}
+.notify {
+  display: flex;
+  position: absolute;
+  gap: 1rem;
+  align-items: center;
+  right: 10px;
+  border: 3px solid var(--primaryDark);
+  background: var(--secondaryLight);
+  border-radius: var(--radius);
+  width: fit-content;
+  overflow: hidden; 
+  top: 10px;
+  animation: leftToRight 0.7s ease-out forwards;
+  & .message {
+    white-space: nowrap;
+    padding-inline: 0.5rem;
+  }
+  & .close {
+    width: 2rem;
+    height: 2rem;
+    border: none;
+    background-color: var(--primaryDark);
+    display: grid;
+    place-items: center;
+  }
+
+}
+@media (prefers-reduced-motion: reduce) {
+  .notify {
+    animation: none;
+  }
+}
+.success {
+  color: var(--success);
+}
+.error {
+  color: var(--danger);
+}
+.warning {
+  color: var(--warning);
+}

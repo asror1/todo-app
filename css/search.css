@@ -1,0 +1,32 @@
+.search {
+  width: 100%;
+  display: flex;
+  gap: 0.5rem;
+  height: fit-content;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+  & .dropdown {
+    flex: 1;
+    height: 2.3rem;
+  }
+  & input[type="text"] {
+    flex: 9;
+    padding-block: 0.5rem;
+    padding-left: 0.6rem;
+    border: 0.1rem solid var(--primaryDark);
+    border-radius: var(--radius);
+    width: 100%;
+    background-color: var(--secondaryLight);
+    font-family: inherit;
+    text-overflow: ellipsis;
+    font-size: 0.7rem;
+    &:focus {
+      outline: 0.1rem solid var(--primaryDark);
+    }
+    &::placeholder {
+      word-spacing: -0.2rem;
+      font-size: 0.6rem;
+      text-shadow: 0.01rem 0.02rem 0.01rem var(--primaryDark);
+    }
+  }
+}
