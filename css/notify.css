@@ -9,13 +9,13 @@
   gap: 1rem;
   align-items: center;
   right: 10px;
-  border: 3px solid var(--primaryDark);
+  outline: 0.1rem solid var(--primaryDark);
   background: var(--secondaryLight);
   border-radius: var(--radius);
   width: fit-content;
   overflow: hidden; 
   top: 10px;
-  animation: leftToRight 0.7s ease-out forwards;
+  animation: leftToRight 0.5s ease-out forwards;
   & .message {
     white-space: nowrap;
     padding-inline: 0.5rem;

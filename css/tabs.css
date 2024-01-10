@@ -19,8 +19,8 @@
     border: none;
     outline: none;
     border-radius: var(--radius);
-    font-size: 0.85rem;
-    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
     transition: scale 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     &:hover {
       font-weight: bold;

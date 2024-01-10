@@ -17,13 +17,12 @@
 
   --warning: var(--powder-blue);
   --danger: #dc3545;
-  --success: #77dd77;
+  --success: var(--pastel-green);
 
   --priority-1: #f4c1c1;
   --priority-2: #fdaaaa;
   --priority-3: #f97c7c;
 
-  --pastel-purple: #b39eb5;
   --primaryDark: var(--delft-blue);
   --primaryLight: var(--powder-blue);
   --secondaryLight: var(--champage-pink);
@@ -46,6 +45,7 @@ body {
   padding: clamp(1rem, 8vw, 3rem);
   gap: 1rem;
   overflow: auto;
+  overflow-x: hidden;
   color: var(--primaryDark);
   & .hide {
     visibility: hidden;

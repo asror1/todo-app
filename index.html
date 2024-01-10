@@ -1,78 +1,88 @@
+<!--
+  TODO App
+  Author: Asror Klichev
+
+  I do not claim ownership of any svg graphics used in this application.
+  All rights belong to their respective owners.
+
+-->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>TODO App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="./assets/pen.svg" sizes="any" type="image/svg+xml" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="./css/header.css" />
+    <link rel="stylesheet" href="./css/todo.css" />
+    <link rel="stylesheet" href="./css/tabs.css" />
+    <link rel="stylesheet" href="./css/dropdown.css" />
+    <link rel="stylesheet" href="./css/buttons.css" />
+    <link rel="stylesheet" href="./css/search.css" />
+    <link rel="stylesheet" href="./css/notify.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <title>TODO App</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" href="./assets/pen.svg" sizes="any" type="image/svg+xml" />
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="./css/header.css" />
-  <link rel="stylesheet" href="./css/todo.css" />
-  <link rel="stylesheet" href="./css/tabs.css" />
-  <link rel="stylesheet" href="./css/dropdown.css" />
-  <link rel="stylesheet" href="./css/buttons.css" />
-  <link rel="stylesheet" href="./css/search.css" />
-  <link rel="stylesheet" href="./css/notify.css" />
-</head>
-
-<body class="center">
-  <h1 class="title fw-bold">
-    <input type="text" class="username" id="username" />
-    <span id="measure" style="
+  <body class="center">
+    <h1 class="title">
+      <input type="text" class="username" id="username" />
+      <span
+        id="measure"
+        style="
           visibility: hidden;
           white-space: pre;
           position: absolute;
           pointer-events: none;
-        "></span>
-    <span class="glow">TODO</span>
-    <span> List</span>
-  </h1>
-  <main class="center">
-    <div class="todo-input">
-      <input type="text" id="todo-input" placeholder="Enter a task TODO" />
-      <span style="display: flex; flex: 1; gap: 0.5rem">
-        <div class="dropdown" id="priority">
-          <button>Priority</button>
+        "
+      ></span>
+      <span class="glow">TODO</span>
+      <span> List</span>
+    </h1>
+    <main class="center">
+      <div class="todo-input">
+        <input type="text" id="todo-input" placeholder="Please enter a task you need TODO" />
+        <span style="display: flex; flex: 1; gap: 0.5rem">
+          <div class="dropdown" id="priority">
+            <button>Priority</button>
+            <div class="menu hide">
+              <li tabindex="0" data-value="1">Low</li>
+              <li tabindex="0" data-value="2">Moderate</li>
+              <li tabindex="0" data-value="3">Top</li>
+            </div>
+          </div>
+          <button class="btn" id="plus">+</button>
+        </span>
+      </div>
+      <hr />
+      <div class="search">
+        <input type="text" id="search" placeholder="Search task by prefix..." />
+        <div class="dropdown" id="sort">
+          <button>Sort By</button>
           <div class="menu hide">
-            <li tabindex="0" data-value="1">Low</li>
-            <li tabindex="0" data-value="2">Moderate</li>
-            <li tabindex="0" data-value="3">Top</li>
+            <li tabindex="0" data-value="az">A-z Ascending Order</li>
+            <li tabindex="0" data-value="za">z-A Descending Order</li>
+            <li tabindex="0" data-value="lh">Least priority to Highest</li>
+            <li tabindex="0" data-value="hl">Highest priority to Least</li>
           </div>
         </div>
-        <button class="btn" id="plus">+</button>
-      </span>
-    </div>
-    <hr />
-    <div class="search">
-      <input type="text" id="search" placeholder="Search task by prefix..." />
-      <div class="dropdown" id="sort">
-        <button>Sort By</button>
-        <div class="menu hide">
-          <li tabindex="0" data-value="az">A-z Ascending Order</li>
-          <li tabindex="0" data-value="za">z-A Descending Order</li>
-          <li tabindex="0" data-value="lh">Least priority to Highest</li>
-          <li tabindex="0" data-value="hl">Highest priority to Least</li>
-        </div>
       </div>
-    </div>
-    <div class="tabs">
-      <button id="active">Active</button>
-      <button id="completed">Completed</button>
-      <button id="all" class="selected">All</button>
-    </div>
-    <ul class="todos" id="all-todos"></ul>
-  </main>
-  <a class="github" href="https://github.com/asror1/todo-app" target="_blank"><img src="assets/github.svg" alt="github"
-      class="icon" /></a>
-</body>
-<script src="./js/utils.js"></script>
-<script src="./js/Dropdown.js"></script>
-<script src="./js/Trie.js"></script>
-<script src="./js/Task.js"></script>
-<script src="./js/BST.js"></script>
-<script src="./js/TodoList.js"></script>
-<script src="./js/index.js"></script>
-<script src="./js/header.js"></script>
-
+      <div class="tabs">
+        <button id="active">Active</button>
+        <button id="completed">Completed</button>
+        <button id="all" class="selected">All</button>
+      </div>
+      <ul class="todos" id="all-todos"></ul>
+    </main>
+    <a class="github" href="https://github.com/asror1/todo-app" target="_blank"
+      ><img src="assets/github.svg" alt="github" class="icon"
+    /></a>
+  </body>
+  <script src="./js/utils.js"></script>
+  <script src="./js/Dropdown.js"></script>
+  <script src="./js/Trie.js"></script>
+  <script src="./js/BST.js"></script>
+  <script src="./js/Task.js"></script>
+  <script src="./js/TodoList.js"></script>
+  <script src="./js/index.js"></script>
+  <script src="./js/header.js"></script>
 </html>

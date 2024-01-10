@@ -1,3 +1,5 @@
+// Author: Asror Klichev
+
 /**
  * Sorts an array of elements
  * @param {Array} arr, array to sort

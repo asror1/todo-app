@@ -1,5 +1,7 @@
+// Author: Asror Klichev
+
 /**
- * Trie node
+ * Inner Trie node
  */
 class TrieNode {
   id;
@@ -18,6 +20,11 @@ class Trie {
   constructor() {
     this.root = new TrieNode();
   }
+  /**
+   * @method insert, inserts task desc/name into trie
+   * @param {string} word, task desc/name
+   * @param {number} id, associated id with task
+   */
   insert(word, id) {
     let node = this.root;
     for (const char of word) {
@@ -29,6 +36,11 @@ class Trie {
     node.isEnd = true;
     node.id = id;
   }
+  /**
+   * Find all tasks that start with prefix
+   * @param {TrieNode} node
+   * @param {Array} res
+   */
   #find(node, res) {
     if (!node || !node.children) return;
     if (node.isEnd) res.push(node.id);
@@ -36,6 +48,11 @@ class Trie {
       this.#find(node.children[child], res);
     }
   }
+  /**
+   * @method startsWith, finds all tasks that start with prefix
+   * @param {string} prefix
+   * @returns {Array} Array of task ids
+   */
   startsWith(prefix) {
     let node = this.root;
     for (const char of prefix) {

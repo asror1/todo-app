@@ -1,8 +1,7 @@
 // Description: Logic for dynamic header
 // Author: Asror Klichev
 
-// Definition --------------------------------------------------
-
+// Definitions
 const USERNAME_KEY = "username"; // The key used to store the user's name in local storage
 const DEFAULT_USERNAME = "<YourName>"; // The default name to use if the user has not set one
 const nameInput = document.getElementById("username"); // The input element for the user's name
@@ -14,7 +13,7 @@ if (exists(USERNAME_KEY)) {
 }
 
 /**
- * Resizes the input element
+ * Resizes the input element to fit the text inside it.
  *
  */
 function resize() {

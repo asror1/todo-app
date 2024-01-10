@@ -1,6 +1,6 @@
 // Author: Asror Klichev
 
-const TODO_LIST_KEY = "todo-list";
+const TODO_LIST_KEY = "todo-list"; // used for state persistence
 
 /**
  * @class TodoList, a class that represents a list of todo items, both
@@ -29,7 +29,16 @@ class TodoList {
 
     if (exists(TODO_LIST_KEY)) {
       find(TODO_LIST_KEY).forEach((state) => {
-        this.loadTasks(state);
+        const redoTask = this.redoTask.bind(this);
+        const markComplete = this.markComplete.bind(this);
+        const removeTask = this.removeTask.bind(this);
+        const task = new Task({
+          ...state,
+          onRedo: redoTask,
+          onRemove: removeTask,
+          onComplete: markComplete,
+        });
+        this.#add(task);
       });
     }
     this.#display();
@@ -90,7 +99,9 @@ class TodoList {
   /**
    * Sorts the todo list by the given criteria
    *
-   * @param {string} by one of "az", "za", "lh", "hl", where "az" is ascending alphabetical order, "za" is descending alphabetical order, "lh" is least priority to highest, and "hl" is highest priority to lowest
+   * @param {string} by one of "az", "za", "lh", "hl", where "az" is ascending alphabetical order,
+   * "za" is descending alphabetical order,
+   * "lh" is least priority to highest, and "hl" is highest priority to lowest
    */
   sort(by = "az") {
     if (!["az", "za", "lh", "hl"].includes(by)) by = "az";
@@ -180,6 +191,9 @@ class TodoList {
     }
   }
 
+  /**
+   * Persists state
+   */
   #persistState() {
     let arr = [];
     for (const task of this.tasks.values()) {
@@ -187,6 +201,7 @@ class TodoList {
     }
     save(TODO_LIST_KEY, arr); // the array of task states are persisted in storage, for persistence of data
   }
+  // Handlers to pass to Task during creation
   markComplete() {
     this.#display();
     this.#persistState();
@@ -199,12 +214,21 @@ class TodoList {
     this.tasks.delete(id);
     this.#persistState();
   }
+  /**
+   * Adds a task to the list
+   * @param {Task} task
+   */
   #add(task) {
     this.trie.insert(task.state.text, task.state.id);
     this.bst.insert(task.state.priority, task.state.id);
     this.tasks.set(task.state.id, task);
     this.container.appendChild(task.element);
   }
+  /**
+   * Creates and adds a task to the list
+   * @param {obj.string} text, the name or description of the task
+   * @param {obj.number} priority, the level of priority of the task
+   */
   pushTask({ text, priority }) {
     if (!text) {
       throw new Error("TODO: Todo item text is required");
@@ -221,17 +245,5 @@ class TodoList {
     });
     this.#add(task);
     this.#persistState();
-  }
-  loadTasks(obj) {
-    const redoTask = this.redoTask.bind(this);
-    const markComplete = this.markComplete.bind(this);
-    const removeTask = this.removeTask.bind(this);
-    const task = new Task({
-      ...obj,
-      onRedo: redoTask,
-      onRemove: removeTask,
-      onComplete: markComplete,
-    });
-    this.#add(task);
   }
 }

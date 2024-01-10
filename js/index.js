@@ -1,11 +1,13 @@
 // Author: Asror Klichev
 
+// Sequence initialization, for unique id generation
 const SEQUENCE_KEY = "sequence";
 
 if (!exists(SEQUENCE_KEY)) {
   save(SEQUENCE_KEY, 1);
 }
 
+// Definitions
 const plusButton = document.getElementById("plus");
 const todoInput = document.getElementById("todo-input");
 
@@ -33,6 +35,7 @@ search.addEventListener("blur", () => {
   search.value = "";
 });
 
+// Handle todo creation
 const create = () => {
   try {
     list.pushTask({ text: todoInput.value, priority });
@@ -59,6 +62,7 @@ todoInput.addEventListener("keydown", (event) => {
   }
 });
 
+// Handle tab selection
 const allTab = document.getElementById("all");
 const activeTab = document.getElementById("active");
 const completedTab = document.getElementById("completed");

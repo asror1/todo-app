@@ -1,5 +1,7 @@
+// Author: Asror Klichev
+
 /**
- * @class TreeNode, represents a BST node
+ * @class TreeNode, iner utility class, represents a binary tree node
  */
 class TreeNode {
   constructor(data, id) {
@@ -10,18 +12,22 @@ class TreeNode {
   }
 }
 /**
- * @class BST data structure, used for efficient lookup, and storing elements in sorted order. Enforced order: left subtree smaller than root right subtree greater than root, meaning [smallest... biggest]
+ * @class BST, used for efficient lookup,
+ * and storing elements in sorted order.
+ * Enforced order: left subtree smaller than
+ * root right subtree greater than root,
+ * meaning [smallest... biggest]
  */
 class BST {
-  /**
-   * @constructor
-   *
-   * @param {function} isLess, the order of which to enforce,
-   * provides two elements for the predicate to compare
-   */
   constructor() {
     this.root = null;
   }
+  /**
+   * @method insert, inserts a new node into the BST
+   * @param {any} data, the data to be stored in the node
+   * @param {any} id, the id associated with the data
+   *
+   */
   insert(data, id) {
     let newNode = new TreeNode(data, id);
     if (this.root === null) this.root = newNode;
@@ -29,6 +35,11 @@ class BST {
       this.#insert(this.root, newNode);
     }
   }
+  /**
+   * Utility method for inserting a new node into the BST
+   * @param {TreeNode} node, the current node
+   * @param {TreeNode} newNode, the new node to be inserted
+   */
   #insert(node, newNode) {
     if (newNode.data < node.data) {
       if (node.left === null) {
@@ -44,13 +55,26 @@ class BST {
       }
     }
   }
+  /**
+   * Utility method to find the max depth of a node
+   * @param {TreeNode} node, starting node, or current node
+   */
   #maxDepth(node) {
     if (node === null) return 1;
     return 1 + Math.max(this.#maxDepth(node.left), this.#maxDepth(node.right));
   }
+  /**
+   * @method remove, removes a piece of data from the BST
+   * @param {any} data, the data to be removed
+   */
   remove(data) {
     this.#remove(this.root, data);
   }
+  /**
+   * Utility method to remove a node from the BST
+   * @param {TreeNode} node, the starting/current node
+   * @param {any} data, the data to be removed
+   */
   #remove(node, data) {
     if (node === null) return null;
     if (data < node.data) {
@@ -78,9 +102,18 @@ class BST {
       return node;
     }
   }
+  /**
+   * @method removeById, removes a node from the BST by id
+   * that is associated with data. Extremely inefficient O(n).
+   */
   removeById(id) {
     this.root = this.#removeById(id, this.root);
   }
+  /**
+   * Utility method to remove a node from the BST by id
+   * @param {any} id, the id to be removed
+   * @param {TreeNode} node, the starting/current node
+   */
   #removeById(id, node) {
     if (node === null) return null;
     if (node.id === id) {
@@ -103,6 +136,10 @@ class BST {
       return node;
     }
   }
+  /**
+   * Utility method to find the left most node in a subtree
+   * @param {TreeNode} node, the starting node
+   */
   #leftMost(node) {
     if (node.left === null) {
       return node;
@@ -122,6 +159,10 @@ class BST {
     callback(node);
     this.#iter(node.right, callback);
   }
+  /**
+   * @method toArray, returns an array of objects with id and data
+   * @returns {Array} array of objects with id and data
+   */
   toArray() {
     let arr = [];
     this.#iter(this.root, (elem) => {

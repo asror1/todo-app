@@ -41,11 +41,8 @@ class Task {
     this.state.text = text;
     this.state.priority = priority;
     this.state.isComplete = isComplete;
-    this.state.onRemove = handleRemove;
-    this.state.onRedo = handleRedo;
-    this.state.onComplete = handleComplete;
 
-    // priority indicator, to accommodate for users with learning disabilities
+    // priority indicator
     let i;
     if (priority == 2) {
       i = "◍";
@@ -58,7 +55,7 @@ class Task {
       classList: "indicator",
       text: i,
     });
-    if(this.state.isComplete){
+    if (this.state.isComplete) {
       indicator.classList.add("hide");
     }
 
@@ -74,7 +71,7 @@ class Task {
             const s = `priority-${this.state.priority}`;
             this.element.classList.remove("completed");
             this.element.classList.add(s);
-                  indicator.classList.remove("hide");
+            indicator.classList.remove("hide");
             checkbox.checked = false;
             checkbox.disabled = false;
             redo.remove();
