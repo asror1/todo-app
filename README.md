@@ -1,3 +1,5 @@
-# Todo App
+# TODO App
 
-Keep track of things you have to do.
+Task management application. Keep track of things you have _todo_.
+
+[Specification](./SPECS.md)
